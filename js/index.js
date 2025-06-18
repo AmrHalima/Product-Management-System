@@ -55,7 +55,7 @@ updateBtn.addEventListener("click", function (e) {
         if (inputs[3].value) {
             products[
                 updateBtn.index
-            ].productImg = `../imgs/${inputs[3].value.slice(
+            ].productImg = `Product-Management-System/imgs/${inputs[3].value.slice(
                 inputs[3].value.lastIndexOf("\\")+1
             )}`;
         }
@@ -186,7 +186,7 @@ function addProduct() {
     product.productName = inputs[0].value;
     product.productCategory = inputs[1].value;
     product.productPrice = inputs[2].value;
-    product.productImg = `../imgs/${inputs[3].value.slice(
+    product.productImg = `Product-Management-System/imgs/${inputs[3].value.slice(
         inputs[3].value.lastIndexOf("\\")+1
     )}`;
     product.productDescription = inputs[4].value;
