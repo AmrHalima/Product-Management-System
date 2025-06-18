@@ -137,9 +137,6 @@ function validateForm(obj) {
 }
 function validateInputValue(inputElement) {
     if (inputElement === inputs[3]) {
-        console.log(inputElement.files[0].size);
-        console.log(inputElement.value);
-        console.log(regex.productImg.test(inputElement.value));
         if (regex.imgSize.test(inputElement.files[0].size)) {
             if (!regex.productImg.test(inputElement.value)) {
                 inputElement.nextElementSibling.innerHTML =
@@ -195,7 +192,6 @@ function addProduct() {
         localStorageKey,
         JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
     );
-    console.log("added");
     displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
 }
 function displayProducts(list) {
@@ -264,14 +260,12 @@ function setInputsValues(product) {
 }
 //*event delegation used
 function editProduct(t) {
-    console.log("edit clicked", t.getAttribute("index"));
     setInputsValues(products[t.getAttribute("index")]);
     updateBtn.classList.remove("d-none");
     updateBtn.index = t.getAttribute("index");
     addBtn.classList.add("d-none");
 }
 function deleteProduct(t) {
-    console.log("delete clicked", t.getAttribute("index"));
     products.splice(t.getAttribute("index"), 1);
     localStorage.setItem(
         localStorageKey,
