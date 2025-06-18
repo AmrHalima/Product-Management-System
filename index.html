@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/bootstrap.bundle.min.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <title>phone Store</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row">
+                <section class="col-lg-6 col-sm-12">
+                    <div class="d-flex align-items-baseline gap-3 p-2">
+                        <i class="fa-apple fa-brands fa-3x"></i>
+                        <h1>Phone Store</h1>
+                    </div>
+                    <div class="glassy-bg d-flex flex-column gap-3">
+                        <div class="form-floating">
+                            <select id="productCategory" class="form-select glassy-bg inner">
+                                <option selected value="Phones">Phones</option>
+                                <option value="Covers">Covers</option>
+                                <option value="Screen Protectors">Screen Protectors</option>
+                            </select>
+                            <label for="productCategory">Select Category</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="productName" type="text" class="form-control glassy-bg inner" placeholder="">
+                            <span class="text-danger d-none">length should be between 3 and 15 digits</span>
+                            <label for="productName">product Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="productPrice" type="text" class="form-control glassy-bg inner" placeholder="">
+                            <span class="text-danger d-none">Price should be between 6,000 and 60,000</span>
+                            <label for="productPrice">product Price</label>
+                        </div>
+                        <div class="form-floating z-1">
+                            <input id="productImgDecoy" type="text" class="form-control glassy-bg inner" readonly placeholder="">
+                            <input id="productImg" type="file" class="position-relative top-0 bottom-0 start-0 end-0 opacity-100 inner" placeholder="">
+                            <span class="text-danger d-none">image must be included</span>
+                            <label for="productImg">product image</label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea id="productDescription" type="text" class="form-control glassy-bg inner"
+                                placeholder=""></textarea>
+                            <span class="text-danger d-none">invalid</span>
+                            <label for="productDescription">product description (Optional)</label>
+                        </div>
+                        <button id="addBtn" class="btn glassy-bg inner text-white-50" type="submit">add
+                            product</button>
+                        <button id="updateBtn" class="btn glassy-bg text-white-50 inner d-none" type="submit">update
+                            product</button>
+                    </div>
+                </section>
+                <section class="col-lg-6 col-sm-12 mt-5">
+                    <div class="form-floating mx-auto my-4 w-75">
+                        <input id="productSearch" type="text" class="form-control glassy-bg" placeholder="">
+                        <label for="productSearch" class="px-4"><i class="fa-search fa pe-3"></i>Search</label>
+                    </div>
+                    <div class="row gy-3 glassy-bg items-Section">
+                        <div class="col-12 text-center empty-msg">
+                            <p>No Products Available</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

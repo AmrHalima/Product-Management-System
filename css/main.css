@@ -1,0 +1,73 @@
+@font-face {
+    font-family: SF-Pro-Display;
+    src: url("../fonts/Apple-system-fonts/fonts/SF-Pro/SF-Pro.ttf");
+}
+:root {
+    --background-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --main-color: rgb(209, 213, 219);
+    --secondary-color: black;
+}
+body {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../imgs/bg.svg");
+    font-family: SF-Pro-Display;
+    color: var(--main-color);
+}
+.glassy-bg:not(:has(> img)) {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: var(--background-color);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+}
+.glassy-bg:has(> img) {
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: var(--background-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+.inner {
+    border-radius: 10px;
+}
+.glassy-bg img{
+    aspect-ratio:16/9;
+    object-fit: contain;
+    background-color: #fff;
+}
+.form-control,
+.form-select,
+.item {
+    color: var(--main-color);
+    transition: scale 0.1s ease-in-out,border .5s ease-in-out;
+}
+.form-control:focus,
+.form-select:focus {
+    color: var(--main-color);
+    scale: 101%;
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    box-shadow: 0 0 2rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+.form-floating > label {
+    color: var(--main-color);
+    transition: opacity 0.1s ease-in-out, transform 0.25s ease-in-out;
+}
+.form-select option {
+    color: var(--secondary-color);
+}
+textarea.form-control {
+    max-height: 100px;
+}
+.form-control.valid {
+    border-color: rgb(129, 255, 3);
+}
+.form-control.invalid {
+    border-color: rgba(255, 0, 0, 0.654);
+}
