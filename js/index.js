@@ -55,7 +55,7 @@ updateBtn.addEventListener("click", function (e) {
         if (inputs[3].value) {
             products[
                 updateBtn.index
-            ].productImg = `../imgs${inputs[3].value.slice(
+            ].productImg = `../imgs/${inputs[3].value.slice(
                 inputs[3].value.lastIndexOf("\\")+1
             )}`;
         }
