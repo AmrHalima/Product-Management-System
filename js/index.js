@@ -1,14 +1,3 @@
-//TODO add product to memo [array],local storage then to be desplayed in document
-//TODO edit and update product
-//TODO delete product
-//TODO  search
-//TODO validate
-//TODO
-//TODO
-//TODO
-//TODO
-//TODO
-//TODO
 "use strict";
 const localStorageKey = "ProductsList";
 const local_storage = JSON.parse(localStorage.getItem(localStorageKey));
@@ -48,7 +37,7 @@ for (let i = 0; i < inputs.length; i++) {
 }
 if (local_storage) {
     products = local_storage;
-    displayProducts(products.sort((a, b) => a.price - b.price));
+    displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
 }
 productImg.addEventListener("change", (_) => {
     productImgDecoy.value = productImg.value.slice(
@@ -71,8 +60,11 @@ updateBtn.addEventListener("click", function (e) {
             )}`;
         }
         products[updateBtn.index].productDescription = inputs[4].value;
-        localStorage.setItem(localStorageKey, JSON.stringify(products.sort((a, b) => a.price - b.price)));
-        displayProducts(products.sort((a, b) => a.price - b.price));
+        localStorage.setItem(
+            localStorageKey,
+            JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+        );
+        displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
         setInputsValues();
         addBtn.classList.remove("d-none");
         updateBtn.classList.add("d-none");
@@ -151,7 +143,7 @@ function validateInputValue(inputElement) {
         if (regex.imgSize.test(inputElement.files[0].size)) {
             if (!regex.productImg.test(inputElement.value)) {
                 inputElement.nextElementSibling.innerHTML =
-                " not supported format";
+                    " not supported format";
                 inputElement.classList.remove("valid");
                 inputElement.classList.add("invalid");
                 inputElement.nextElementSibling.classList.remove("d-none");
@@ -164,11 +156,10 @@ function validateInputValue(inputElement) {
             inputElement.nextElementSibling.classList.add("d-none");
             return true;
         } else {
-            inputElement.nextElementSibling.innerHTML =
-                " max size of 4.8 MB";
-                inputElement.classList.remove("valid");
-                inputElement.classList.add("invalid");
-                inputElement.nextElementSibling.classList.remove("d-none");
+            inputElement.nextElementSibling.innerHTML = " max size of 4.8 MB";
+            inputElement.classList.remove("valid");
+            inputElement.classList.add("invalid");
+            inputElement.nextElementSibling.classList.remove("d-none");
             return false;
         }
     }
@@ -200,9 +191,12 @@ function addProduct() {
     )}`;
     product.productDescription = inputs[4].value;
     products.push(product);
-    localStorage.setItem(localStorageKey, JSON.stringify(products.sort((a, b) => a.price - b.price)));
+    localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+    );
     console.log("added");
-    displayProducts(products.sort((a, b) => a.price - b.price));
+    displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
 }
 function displayProducts(list) {
     let blackBox = ``;
@@ -279,13 +273,15 @@ function editProduct(t) {
 function deleteProduct(t) {
     console.log("delete clicked", t.getAttribute("index"));
     products.splice(t.getAttribute("index"), 1);
-    localStorage.setItem(localStorageKey, JSON.stringify(products.sort((a, b) => a.price - b.price)));
+    localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+    );
     if (products.length == 0) {
         itemsSection.innerHTML = `<div class="col-12 text-center empty-msg">
                             <p>No Products Available</p>
                         </div>`;
     } else {
-        displayProducts(products.sort((a, b) => a.price - b.price));
+        displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
     }
 }
-
