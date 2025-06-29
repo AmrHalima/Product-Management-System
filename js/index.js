@@ -37,7 +37,7 @@ for (let i = 0; i < inputs.length; i++) {
 }
 if (local_storage) {
     products = local_storage;
-    displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
+    displayProducts(products.sort((a, b) => b.productPrice - a.productPrice));
 }
 productImg.addEventListener("change", (_) => {
     productImgDecoy.value = productImg.value.slice(
@@ -56,15 +56,19 @@ updateBtn.addEventListener("click", function (e) {
             products[
                 updateBtn.index
             ].productImg = `imgs/${inputs[3].value.slice(
-                inputs[3].value.lastIndexOf("\\")+1
+                inputs[3].value.lastIndexOf("\\") + 1
             )}`;
         }
         products[updateBtn.index].productDescription = inputs[4].value;
         localStorage.setItem(
             localStorageKey,
-            JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+            JSON.stringify(
+                products.sort((a, b) => b.productPrice - a.productPrice)
+            )
         );
-        displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
+        displayProducts(
+            products.sort((a, b) => b.productPrice - a.productPrice)
+        );
         setInputsValues();
         addBtn.classList.remove("d-none");
         updateBtn.classList.add("d-none");
@@ -90,7 +94,7 @@ productSearch.addEventListener("input", (e) => {
                 .toLowerCase()
                 .replaceAll(
                     element.value,
-                    `<span class="text-danger">${element.value}</span>`
+                    `<span class="text-bg-dark fs-4">${element.value}</span>`
                 );
     }
     displayProducts(matchedList);
@@ -184,15 +188,15 @@ function addProduct() {
     product.productCategory = inputs[1].value;
     product.productPrice = inputs[2].value;
     product.productImg = `imgs/${inputs[3].value.slice(
-        inputs[3].value.lastIndexOf("\\")+1
+        inputs[3].value.lastIndexOf("\\") + 1
     )}`;
     product.productDescription = inputs[4].value;
     products.push(product);
     localStorage.setItem(
         localStorageKey,
-        JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+        JSON.stringify(products.sort((a, b) => b.productPrice - a.productPrice))
     );
-    displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
+    displayProducts(products.sort((a, b) => b.productPrice - a.productPrice));
 }
 function displayProducts(list) {
     let blackBox = ``;
@@ -211,7 +215,7 @@ function displayProducts(list) {
                                             ? list[i].matchedname
                                             : list[i].productName
                                     }</h2>
-                                    <p class="lead rounded-2 bg-info d-inline p-1">${
+                                    <p class="lead rounded-2 bg-black bg-opacity-25 d-inline p-1">${
                                         list[i].productPrice
                                     }.LE</p>
                                     <p class="lead d-inline p-1">${
@@ -258,7 +262,6 @@ function setInputsValues(product) {
     inputs[2].value = product.productPrice;
     inputs[4].value = product.productDescription;
 }
-//*event delegation used
 function editProduct(t) {
     setInputsValues(products[t.getAttribute("index")]);
     updateBtn.classList.remove("d-none");
@@ -269,13 +272,15 @@ function deleteProduct(t) {
     products.splice(t.getAttribute("index"), 1);
     localStorage.setItem(
         localStorageKey,
-        JSON.stringify(products.sort((a, b) => a.productPrice - b.productPrice))
+        JSON.stringify(products.sort((a, b) => b.productPrice - a.productPrice))
     );
     if (products.length == 0) {
         itemsSection.innerHTML = `<div class="col-12 text-center empty-msg">
                             <p>No Products Available</p>
                         </div>`;
     } else {
-        displayProducts(products.sort((a, b) => a.productPrice - b.productPrice));
+        displayProducts(
+            products.sort((a, b) => b.productPrice - a.productPrice)
+        );
     }
 }

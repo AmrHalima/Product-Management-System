@@ -36,16 +36,15 @@ body {
 .inner {
     border-radius: 10px;
 }
-.glassy-bg img{
-    aspect-ratio:16/9;
+.glassy-bg img {
+    aspect-ratio: 16/9;
     object-fit: contain;
     background-color: #fff;
 }
 .form-control,
-.form-select,
-.item {
+.form-select {
     color: var(--main-color);
-    transition: scale 0.1s ease-in-out,border .5s ease-in-out;
+    transition: scale 0.1s ease-in-out, border 0.5s ease-in-out;
 }
 .form-control:focus,
 .form-select:focus {
@@ -71,3 +70,4 @@ textarea.form-control {
 .form-control.invalid {
     border-color: rgba(255, 0, 0, 0.654);
 }
+
