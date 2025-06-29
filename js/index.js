@@ -223,9 +223,9 @@ function displayProducts(list) {
                                         }</p>
                                         </figcaption>
                                         <div class="d-flex justify-content-between p-2">
-                                            <button class="btn btn-warning editBtn glassy-bg p-2 px-5 text-white" index="${i}" type="submit"><i
+                                            <button class="btn btn-warning editBtn glassy-bg p-2 px-4 text-white" index="${i}" type="submit"><i
                                                     class="fa-edit fa"></i></button>
-                                            <button class="btn btn-danger deleteBtn glassy-bg p-2 px-5 text-white" index="${i}" type="submit" ><i
+                                            <button class="btn btn-danger deleteBtn glassy-bg p-2 px-4 text-white" index="${i}" type="submit" ><i
                                                     class="fa-trash-can fa"></i></button>
                                         </div>
                             </figure>
